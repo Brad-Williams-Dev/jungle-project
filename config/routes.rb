@@ -4,6 +4,15 @@ get 'about/index'
 
   root to: 'products#index'
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  resources :about, only: [:index]
+
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
 
@@ -20,14 +29,7 @@ get 'about/index'
     resources :categories, except: [:edit, :update, :show, :destroy]
   end
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
-  
-  get '/signup' => 'users#new'
-  post '/users' => 'users#create'
-
-  resources :about, only: [:index]
+ 
     
     
   
